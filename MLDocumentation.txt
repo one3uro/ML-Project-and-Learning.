@@ -1,0 +1,112 @@
+# Machine Learning From Scratch — Learning Journey
+
+Documented: July 26, 2026
+
+Overview
+
+This project documents my process of learning machine learning fundamentals by building algorithms from scratch in Python, using only NumPy and pandas — no ML libraries — before comparing my results against scikit-learn to verify correctness.
+
+The goal wasn't just to get working code, but to understand *why* each piece works, so the underlying logic transfers to any ML scenario, not just the examples here.
+
+
+
+1. Foundation
+
+Before writing any ML code, I built comfort with:
+- **NumPy fundamentals**: vector/matrix operations, broadcasting, normalization (mean/std scaling) without loops
+- Reviewed matrix multiplication and how it maps to computing predictions across many data points at once
+
+2. Core concept: Gradient Descent
+
+Learned the universal training loop that underlies virtually all ML models:
+
+repeat many times:
+    predict          →  prediction = weights · features + bias
+    measure error     →  error = prediction - actual
+    compute gradient   →  direction/amount to adjust each weight
+    update weights     →  weight = weight - (learning_rate * gradient)
+
+
+This 4-step loop is identical whether the model is simple linear regression or a deep neural network — only the prediction formula and loss function change.
+
+3. Project 1: Single-feature linear regression (from scratch)
+
+Built a simple model predicting `test_score` from `hours_studied`, using a straight line (`y = w*x + b`), trained via gradient descent implemented manually with NumPy. Verified convergence toward the correct known relationship.
+
+4. Project 2: Multi-feature linear regression (from scratch)
+
+Extended the model to two features (`hours_studied`, `hours_slept`), then later to four features using a real (synthetically generated) dataset: `student_performance.csv`.
+
+Features used:
+hours_studied`
+hours_slept`
+attendance_percent`
+previous_score`
+
+Target:
+
+Bugs encountered and fixed along the way:
+
+1.Gradient/weight mismatch — assigned the wrong gradient to the wrong weight (e.g. a gradient computed from `hours_slept` was mistakenly applied to the `hours_studied` weight). Caused the loss to rise instead of fall. Fixed by matching each gradient to the correct corresponding feature.
+
+2. Forgot to update the bias term — a line meant to update the bias was accidentally overwriting the gradient variable instead of the bias variable itself, so the bias never actually trained.
+
+3. Exploding gradients from unscaled features — features had very different numeric ranges (e.g. `hours_studied`: 0–10 vs `attendance_percent`: 50–100). This caused gradients for larger-scale features to dominate, leading to the loss diverging to infinity and then `NaN`. 
+   Fix: applied feature scaling (standardization / z-score normalization) to every feature before training:
+   
+     
+     scaled_value = (value - mean) / standard_deviation
+    
+   
+   - This is the same technique scikit-learn's `StandardScaler` performs internally.
+
+4. Inconsistent scaling on new/unseen data** — after scaling training data, new predictions were initially made using *raw, unscaled* input values, causing nonsensical output (e.g. a predicted score of 717 on a 0–100 scale). 
+   Fix: saved the exact mean/std used during training and applied the *same* transformation to any new data before predicting — never recalculated new scaling values.
+
+5. **Duplicate feature bug (sklearn version)** — accidentally passed the same feature (`hours_studied`) into the input matrix twice instead of including `hours_slept`. Diagnosed via the sklearn model producing two identical coefficients — a signature of duplicate/collinear input columns. Fixed by correcting the column stacking to include all four distinct features.
+
+
+
+
+
+
+5. Validation: comparing from-scratch model vs. scikit-learn
+
+Once both versions were debugged, they were run on the same dataset and same unseen data point. Final predictions matched to 5+ decimal places:
+
+
+Manual (from scratch): 53.521640626426404
+scikit-learn:           53.5216417
+
+
+This confirmed the manual gradient descent implementation was mathematically correct, not just error-free.
+
+6. Key takeaways
+
+- The "predict → measure error → compute gradient → update" loop is universal across ML algorithms.
+- Feature scaling isn't optional for gradient-descent-based models — it's a real, common requirement, not an edge case.
+- Any scaling applied during training must be reapplied identically to new data at inference time.
+- Debugging a diverging loss (`inf`/`NaN`) is a distinct failure mode from a crash — it requires watching the loss trend over iterations, not just checking for errors.
+- Library implementations (scikit-learn) perform the same underlying math as a manual implementation — they're an optimized, safer version of the exact same process, not a different process entirely.
+
+7. What's next
+
+- Logistic regression (classification: predicting categories instead of continuous values)
+- Train/test data splitting for properly evaluating generalization
+- Neural networks built from scratch (forward pass + backpropagation)
+- Rebuilding this project's models using scikit-learn's `StandardScaler` and pipeline tools for a more production-style workflow
+
+
+
+Files in this project
+
+- student_performance.csv — artificial dataset (60 samples, 4 features, 1 target) used for training
+- Manual gradient descent implementation (NumPy/pandas only)
+- scikit-learn comparison implementation
+
+
+
+- Props to Claude By anthropic for genuinley saving me in this project and entire learning experience.
+- CSV FILE WAS MADE BY CLAUSE AND IS ARTIFICIAL.
+- Structure for the ML Code was also created by Claude, in order to adapt the code to my learning style and project requirements.
+- Claude had also taught me formulas and concepts behind the ML algorithms, and in addition minor maths concepts such as linear algebra, Matrix Calculus, and Matrices.

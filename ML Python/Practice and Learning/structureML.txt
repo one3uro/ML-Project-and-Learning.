@@ -1,0 +1,65 @@
+
+Structure which i memorised in order to nail this down.
+
+
+RAW PYTHON
+
+1. GET YOUR DATA
+   hours_studied = np.array([1, 2, 3, 4, 5])
+   hours_slept   = np.array([2, 5, 3, 8, 9])
+   test_score    = np.array([3, 5, 7, 9, 12])
+
+2. INITIALIZE PARAMETERS
+   w1 = 0.0   # weight for hours_studied
+   w2 = 0.0   # weight for hours_slept
+   b  = 0.0   # bias
+
+3. CHOOSE:
+   learning_rate = 0.01
+   epochs = 1000
+
+4. REPEAT for each epoch:
+
+   a. PREDICT
+      prediction = (w1 * hours_studied) + (w2 * hours_slept) + b
+
+   b. MEASURE ERROR
+      error = prediction - test_score
+
+   c. COMPUTE GRADIENTS (one per parameter)
+      grad_w1 = mean(2 * error * hours_studied)
+      grad_w2 = mean(2 * error * hours_slept)
+      grad_b  = mean(2 * error)
+
+   d. UPDATE PARAMETERS
+      w1 = w1 - (learning_rate * grad_w1)
+      w2 = w2 - (learning_rate * grad_w2)
+      b  = b  - (learning_rate * grad_b)
+
+   e. EVERY 10 EPOCHS, PRINT PROGRESS
+      loss = mean(error ** 2)
+      print(epoch, loss)
+
+5. AFTER TRAINING
+   a. PRINT FINAL PARAMETERS
+      print(w1, w2, b)
+
+   b. PRINT PREDICTIONS VS ACTUAL (sanity check on training data)
+      final_prediction = (w1 * hours_studied) + (w2 * hours_slept) + b
+      print(final_prediction)
+      print(test_score)
+
+   c. PREDICT ON NEW, UNSEEN DATA
+      new_hours_studied = 6
+      new_hours_slept = 4
+      new_prediction = (w1 * new_hours_studied) + (w2 * new_hours_slept) + b
+      print(new_prediction)
+
+
+
+3rd PARTY LIBRARIES
+
+
+1. model = SomeModelName()      # create the model
+2. model.fit(X, y)              # train it (this replaces your entire for-loop)
+3. model.predict(new_X)         # use it
