@@ -1,0 +1,23 @@
+import numpy as np
+
+# Sample dataset: Predicting whether a student passes (1) or fails (0)
+# Feature 1: Hours Studied
+hours_studied = np.array([1.5, 2.0, 3.5, 4.0, 5.5, 6.0, 7.5, 8.0, 9.0, 10.0])
+
+# Feature 2: Attendance Percentage
+attendance_percent = np.array([50.0, 55.0, 65.0, 70.0, 80.0, 82.0, 90.0, 92.0, 95.0, 98.0])
+
+# Binary Target: Passed (1) or Failed (0)
+passed_exam = np.array([0, 0, 0, 0, 1, 0, 1, 1, 1, 1])
+
+# Unseen data sample to test your trained model
+unseen_hours = 6.5
+unseen_attendance = 88.0
+
+#1. Data Splitting (Slicing the Matrix)Instead of dropping column names like a spreadsheet, you use index numbers to slice your array. You slice it into two new arrays:The Feature Array (X): This contains all your columns of clues.The Target Array (y): This is usually just the very last column containing your 0s and 1s (the answers)
+
+.2. The Train-Test DivideYou pass your X and y arrays into a splitting tool. It randomly shuffles your rows and outputs four separate arrays:X_train (Clues for learning)X_test (Clues for the final exam)y_train (Answers for learning)y_test (Answers for the final exam)
+
+3. Array ScalingEven with arrays, scaling is vital. If column index 0 has values around 1,000 and column index 1 has values around 0.5, the algorithm will break. You pass your X_train and X_test arrays through a scaler to compress all values into a standard range (usually between -3 and 3).
+
+4. Training and GradingYou pass the scaled training arrays into the logistic regression model so it can learn. Then, you pass the test arrays to evaluate how well it predicts.
