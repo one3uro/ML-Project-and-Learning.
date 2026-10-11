@@ -9,3 +9,6 @@ Please read the deocumentation txt file included for full details on the Final p
 Started and finished learning Linear regression details can be seen in the ML python folder
 
 Started learning Logistic regression the details can be seen directly from this repo currently researching how to increase the accuracy of the model. A warning to be aware of at the time of uploading the documentation for the logistic regression, i had not realised the rtf documentation file would not load images as i provided screenshots in the documentation so as a result its become a long chain of numbers. To view it properly, please download the documentation. Sorry for any inconvinience.
+
+Started Learning how to make Machine learning code in C++ 
+(More info soon...)
