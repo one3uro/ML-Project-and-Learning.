@@ -22,7 +22,6 @@ Welcome to my journey learning machine learning! This repository serves as a pra
 * **Documentation:** 
   * 📝 Plain Text: [`MLDocumentation.txt`](./ML%20LOG%20REG/MLDocumentation.txt) | [`logreg structure.txt`](./ML%20LOG%20REG/logreg%20structure.txt)
   * 📄 Word Doc: [`Log Reg Documentation.docx`](./ML%20LOG%20REG/Log%20Reg%20Documentation.docx)
-  * ⚠️ **Important Note on the RTF File:** The [`Logistic Regression Documentation.rtf`](./ML%20LOG%20REG/Logistic%20Regression%20Documentation.rtf) file displays screenshots as raw code text on GitHub due to formatting limitations. **To view the images correctly, please download the file directly to your machine.**
 
 ### 🛠️ Machine Learning in C++
 * **Status:** Upcoming / Just started
