@@ -30,8 +30,9 @@ Welcome to my journey learning machine learning! This repository serves as a pra
 
 
 ### 🛠️ Neural Netwok in Python
-* **Status:** ust started
+* **Status:** Just started
 * **Details:** More information and source files coming soon!
+* **Core Script:** [`LogReg.py`](./Neural%20%20Network%20Google%20Colab/Neural_network.ipynb)
 
 ## 📋 Project Breakdown: Student Performance Classifier
 The main project in the **`ML LOG REG`** folder uses a **Logistic Regression** model optimized with `PolynomialFeatures` and `StandardScaler` to predict student exam outcomes. 
