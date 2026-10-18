@@ -28,7 +28,10 @@ Welcome to my journey learning machine learning! This repository serves as a pra
 * **Status:** Upcoming / Just started
 * **Details:** More information and source files coming soon!
 
----
+
+### 🛠️ Neural Netwok in Python
+* **Status:** Upcoming / Just started
+* **Details:** More information and source files coming soon!
 
 ## 📋 Project Breakdown: Student Performance Classifier
 The main project in the **`ML LOG REG`** folder uses a **Logistic Regression** model optimized with `PolynomialFeatures` and `StandardScaler` to predict student exam outcomes. 
