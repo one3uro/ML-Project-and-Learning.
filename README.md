@@ -26,7 +26,7 @@ Welcome to my journey learning machine learning! This repository serves as a pra
 ### 🛠️ Machine Learning in C++
 * **Status:** Upcoming / Just started
 * **Details:** More information and source files coming soon
-* **Core Script:** ['Neural_network.ipynb'] (./Neural20%Network20%Google20%Colab%)
+
 
 
 ### 🛠️ Neural Netwok in Python
