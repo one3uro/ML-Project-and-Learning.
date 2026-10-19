@@ -116,4 +116,4 @@ This project is for educational purposes and machine learning experimentation. T
 
 ## Dataset Acknowledgement
 
-The project uses a credit card fraud detection dataset. The original dataset source and applicable usage terms should be acknowledged here once confirmed.
+The project uses a credit card fraud detection dataset. The original dataset source is from Kaggle.
